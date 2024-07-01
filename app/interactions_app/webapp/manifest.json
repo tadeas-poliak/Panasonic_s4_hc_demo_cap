@@ -105,6 +105,14 @@
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
                     "type": "AnalyticalTable"
+                  },
+                  "columns": {
+                    "DataField::LOGTEXT": {
+                      "widthIncludingColumnHeader": true
+                    },
+                    "DataField::PARTNER": {
+                      "widthIncludingColumnHeader": true
+                    }
                   }
                 }
               }

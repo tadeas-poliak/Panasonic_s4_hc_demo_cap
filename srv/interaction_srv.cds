@@ -23,12 +23,6 @@ service CatalogService {
 
     entity V_Interaction as projection on V_INTERACTION;
 
-    
-    entity V_Interactions_Items_Agg as projection on interactions.V_Interactions_Items_Agg
-    {
-        INTHeaderID,
-        TOTAL_QTY: Decimal 
-    };
 
     function sleep() returns Boolean;
 }
