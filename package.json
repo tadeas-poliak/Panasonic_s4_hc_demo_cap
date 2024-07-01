@@ -1,0 +1,61 @@
+{
+  "name": "s4_hana_app",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
+    "@sap/xssec": "^3",
+    "express": "^4",
+    "hana-cli": "^3.202405.1"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "@sap/eslint-plugin-cds": "^3",
+    "@sap/ux-specification": "^1.120.13",
+    "eslint": "^9",
+    "rimraf": "^5.0.5"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-intercation_items": "cds watch --open intercation_items/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-v_interaction_app": "cds watch --open v_interaction_app/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-interactions_analytical": "cds watch --open interactions_analytical/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy s4_hana_app --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-interaction_app": "cds watch --open interaction_app/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-interactions_app": "cds watch --open interactions_app/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-interacations_app": "cds watch --open interacations_app/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "requires": {
+      "auth": "xsuaa",
+      "db": "hana"
+    },
+    "features": {
+        "odata_new_parser": true
+      }
+    
+  },
+  "sapux": [
+    "app/intercation_items",
+    "app/v_interaction_app",
+    "app/interactions_analytical",
+    "app/interactions_analytical",
+    "app/interaction_app",
+    "app/interaction_app",
+    "app/interactions_app",
+    "app/interaction_app",
+    "app/interaction_app",
+    "app/interaction_app",
+    "app/interacations_app",
+    "app/interactions_app",
+    "app/interactions_app",
+    "app/interactions_app"
+  ]
+}
