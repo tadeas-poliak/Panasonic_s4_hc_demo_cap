@@ -1,42 +1,50 @@
 using CatalogService as service from '../../srv/interaction_srv';
 
 annotate service.V_Interaction with @(
+    Aggregation.CustomAggregate #QTY: 'Edm.Decimal',
     UI.LineItem                     : [
         {
             $Type: 'UI.DataField',
-            Value: TEXT_ID,
-        },
-        {
-            $Type: 'UI.DataField',
-            Value: PARTNER,
-        },
-        {
-            $Type: 'UI.DataField',
+            Label:'Header ID',
             Value: ID,
         },
         {
             $Type: 'UI.DataField',
+            Label: 'Text ID',
+            Value: TEXT_ID,
+        },
+        {
+            $Type: 'UI.DataField',
+            Label: 'Partner Number',
+            Value: PARTNER,
+        },
+        {
+            $Type: 'UI.DataField',
+            Label: 'Log Date',
             Value: LOG_DATE,
         },
         {
             $Type: 'UI.DataField',
+            Label:'Country Code',
             Value: BPCOUNTRY_CODE,
         },
         {
             $Type: 'UI.DataField',
+            Label:'Quantity',
             Value: QTY,
 
         }
     ],
 
     UI.PresentationVariant          : {
-        GroupBy       : [BPCOUNTRY_CODE],
+        GroupBy       : [PARTNER],
         Total         : [QTY],
         Visualizations: ['@UI.LineItem', ]
     }
 );
 
 annotate service.V_Interaction with @Aggregation.ApplySupported: {
+    
   Transformations       : [
     'aggregate',
     'topcount',
