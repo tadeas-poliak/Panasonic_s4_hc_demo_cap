@@ -86,34 +86,34 @@
       "routes": [
         {
           "pattern": ":?query:",
-          "name": "Interactions_HeaderList",
-          "target": "Interactions_HeaderList"
+          "name": "DeliveryList",
+          "target": "DeliveryList"
         },
         {
-          "pattern": "Interactions_Header({key}):?query:",
-          "name": "Interactions_HeaderObjectPage",
-          "target": "Interactions_HeaderObjectPage"
+          "pattern": "Delivery({key}):?query:",
+          "name": "DeliveryObjectPage",
+          "target": "DeliveryObjectPage"
         },
         {
-          "pattern": "Interactions_Header({key})/ITEMS({key2}):?query:",
+          "pattern": "Delivery({key})/ITEMS({key2}):?query:",
           "name": "Interactions_ItemsObjectPage",
           "target": "Interactions_ItemsObjectPage"
         }
       ],
       "targets": {
-        "Interactions_HeaderList": {
+        "DeliveryList": {
           "type": "Component",
-          "id": "Interactions_HeaderList",
+          "id": "DeliveryList",
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "contextPath": "/Interactions_Header",
+              "contextPath": "/Delivery",
               "variantManagement": "Page",
               "hideFilterBar": true,
               "navigation": {
-                "Interactions_Header": {
+                "Delivery": {
                   "detail": {
-                    "route": "Interactions_HeaderObjectPage"
+                    "route": "DeliveryObjectPage"
                   }
                 }
               },
@@ -127,14 +127,14 @@
             }
           }
         },
-        "Interactions_HeaderObjectPage": {
+        "DeliveryObjectPage": {
           "type": "Component",
-          "id": "Interactions_HeaderObjectPage",
+          "id": "DeliveryObjectPage",
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/Interactions_Header",
+              "contextPath": "/Delivery",
               "navigation": {
                 "ITEMS": {
                   "detail": {
@@ -152,7 +152,7 @@
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/Interactions_Header/ITEMS"
+              "contextPath": "/Delivery/ITEMS"
             }
           }
         }

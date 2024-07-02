@@ -73,6 +73,10 @@ modules:
       - interacationsapp.zip
       name: interacationsapp
       target-path: resources/
+    - artifacts:
+      - analyticalfioriapp.zip
+      name: analyticalfioriapp
+      target-path: resources/
 - name: interactionsanalytical
   type: html5
   path: app/interactions_analytical
@@ -106,6 +110,16 @@ modules:
 - name: interacationsapp
   type: html5
   path: app/interacations_app
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: analyticalfioriapp
+  type: html5
+  path: app/analytical_fiori_app
   build-parameters:
     build-result: dist
     builder: custom

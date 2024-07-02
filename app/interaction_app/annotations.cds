@@ -1,6 +1,6 @@
 using CatalogService as service from '../../srv/interaction_srv';
 
-annotate service.Interactions_Header with @(
+annotate service.Delivery with @(
     UI.FieldGroup #GeneratedGroup: {
         $Type: 'UI.FieldGroupType',
         Data : [
@@ -12,12 +12,12 @@ annotate service.Interactions_Header with @(
             {
                 $Type: 'UI.DataField',
                 Label: 'PARTNER',
-                Value: PARTNER,
+                Value: PARTNER_NUM,
             },
             {
                 $Type: 'UI.DataField',
                 Label: 'LOG_DATE',
-                Value: LOG_DATE,
+                Value: DATE_IN,
             },
         ],
     },
@@ -44,17 +44,17 @@ annotate service.Interactions_Header with @(
         {
             $Type: 'UI.DataField',
             Label: 'PARTNER',
-            Value: PARTNER,
+            Value: PARTNER_NUM,
         },
         {
             $Type: 'UI.DataField',
             Label: 'LOG_DATE',
-            Value: LOG_DATE,
+            Value: DATE_IN,
         },
     ],
 );
 
-annotate service.V_Interaction with @(
+annotate service.V_delivery_item with @(
     UI.FieldGroup #VInteractionFieldGroup : {
         $Type : 'UI.FieldGroupType',
         Data : [
@@ -66,32 +66,32 @@ annotate service.V_Interaction with @(
             {
                 $Type : 'UI.DataField',
                 Label : 'PARTNER',
-                Value : PARTNER,
+                Value : PARTNER_NUM,
             },
             {
                 $Type : 'UI.DataField',
                 Label : 'LOG_DATE',
-                Value : LOG_DATE,
+                Value : DATE_IN,
             },
             {
                 $Type : 'UI.DataField',
                 Label : 'BPCOUNTRY_CODE',
-                Value : BPCOUNTRY_CODE,
+                Value : COUNTRY_DEST_CODE,
             },
             {
                 $Type : 'UI.DataField',
                 Label : 'TEXT_ID',
-                Value : TEXT_ID,
+                Value : MATERIAL_ID,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'LANGU',
-                Value : LANGU,
+                Label : 'Item description',
+                Value : ITEM_DESC,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'LOGTEXT',
-                Value : LOGTEXT,
+                Label : 'UNIT',
+                Value : UNIT,
             },
             {
                 $Type : 'UI.DataField',
@@ -109,32 +109,32 @@ annotate service.V_Interaction with @(
         {
             $Type : 'UI.DataField',
             Label : 'PARTNER',
-            Value : PARTNER,
+            Value : PARTNER_NUM,
         },
         {
             $Type : 'UI.DataField',
             Label : 'LOG_DATE',
-            Value : LOG_DATE,
+            Value : DATE_IN,
         },
         {
             $Type : 'UI.DataField',
             Label : 'BPCOUNTRY_CODE',
-            Value : BPCOUNTRY_CODE,
+            Value : COUNTRY_DEST_CODE,
         },
         {
             $Type : 'UI.DataField',
             Label : 'TEXT_ID',
-            Value : TEXT_ID,
+            Value : MATERIAL_ID,
         },
         {
             $Type : 'UI.DataField',
             Label : 'LANGU',
-            Value : LANGU,
+            Value : UNIT,
         },
         {
             $Type : 'UI.DataField',
             Label : 'LOGTEXT',
-            Value : LOGTEXT,
+            Value : ITEM_DESC,
         },
         {
             $Type : 'UI.DataField',

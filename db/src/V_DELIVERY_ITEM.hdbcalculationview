@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="V_DELIVERY_ITEM" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" application="BAS">
+<descriptions defaultDescription="V_DELIVERY_ITEM"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="APP_INTERACTIONS_ITEM">
+    <resourceUri>APP_INTERACTIONS_ITEM</resourceUri>
+  </DataSource>
+  <DataSource id="APP_INTERACTIONS_DELIVERY">
+    <resourceUri>APP_INTERACTIONS_DELIVERY</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="PARTNER_NUM"/>
+      <viewAttribute id="DATE_OUT"/>
+      <viewAttribute id="DATE_IN"/>
+      <viewAttribute id="COUNTRY_DEST_CODE"/>
+      <viewAttribute id="MATERIAL_ID"/>
+      <viewAttribute id="UNIT"/>
+      <viewAttribute id="ITEM_DESC"/>
+      <viewAttribute id="QTY"/>
+      <viewAttribute hidden="true" id="JOIN$DELIVERY_ID$ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="APP_INTERACTIONS_ITEM">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATERIAL_ID" source="MATERIAL_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UNIT" source="UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ITEM_DESC" source="ITEM_DESC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QTY" source="QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DELIVERY_ID$ID" source="DELIVERY_ID"/>
+    </input>
+    <input node="APP_INTERACTIONS_DELIVERY">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_NUM" source="PARTNER_NUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE_OUT" source="DATE_OUT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATE_IN" source="DATE_IN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_DEST_CODE" source="COUNTRY_DEST_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$DELIVERY_ID$ID" source="ID"/>
+    </input>
+    <joinAttribute name="JOIN$DELIVERY_ID$ID"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="ID"/>
+    </attribute>
+    <attribute id="PARTNER_NUM" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNER_NUM"/>
+      <keyMapping columnObjectName="Join_1" columnName="PARTNER_NUM"/>
+    </attribute>
+    <attribute id="DATE_OUT" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE_OUT"/>
+      <keyMapping columnObjectName="Join_1" columnName="DATE_OUT"/>
+    </attribute>
+    <attribute id="DATE_IN" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE_IN"/>
+      <keyMapping columnObjectName="Join_1" columnName="DATE_IN"/>
+    </attribute>
+    <attribute id="COUNTRY_DEST_CODE" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY_DEST_CODE"/>
+      <keyMapping columnObjectName="Join_1" columnName="COUNTRY_DEST_CODE"/>
+    </attribute>
+    <attribute id="MATERIAL_ID" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MATERIAL_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="MATERIAL_ID"/>
+    </attribute>
+    <attribute id="UNIT" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UNIT"/>
+      <keyMapping columnObjectName="Join_1" columnName="UNIT"/>
+    </attribute>
+    <attribute id="ITEM_DESC" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ITEM_DESC"/>
+      <keyMapping columnObjectName="Join_1" columnName="ITEM_DESC"/>
+    </attribute>
+    <attribute id="QTY" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QTY"/>
+      <keyMapping columnObjectName="Join_1" columnName="QTY"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="216"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="APP_INTERACTIONS_ITEM" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="457" y="38"/>
+      <rectangleSize width="220.685546875"/>
+    </shape>
+    <shape modelObjectName="APP_INTERACTIONS_DELIVERY" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="154" y="38"/>
+      <rectangleSize width="251.587890625"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

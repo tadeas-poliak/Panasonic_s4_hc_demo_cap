@@ -1,6 +1,6 @@
 using CatalogService as service from '../../srv/interaction_srv';
 
-annotate service.V_Interaction with @(
+annotate service.V_delivery_item with @(
     Aggregation.CustomAggregate #QTY: 'Edm.Decimal',
 
     UI.LineItem                     : [
@@ -12,33 +12,33 @@ annotate service.V_Interaction with @(
         {
             $Type: 'UI.DataField',
             Label: 'Partner Number',
-            Value: PARTNER,
+            Value: PARTNER_NUM,
         },
         {
             $Type: 'UI.DataField',
-            Label: 'Text ID',
-            Value: TEXT_ID,
+            Label: 'Material ID',
+            Value: MATERIAL_ID,
         },
 
         {
             $Type            : 'UI.DataField',
-            Label            : 'Log Text',
-            Value            : LOGTEXT
+            Label            : 'Item Description',
+            Value            : ITEM_DESC
         },
         {
             $Type: 'UI.DataField',
-            Label: 'Log Date',
-            Value: LOG_DATE,
+            Label: 'Inbound Date',
+            Value: DATE_IN,
         },
         {
             $Type: 'UI.DataField',
-            Label: 'Language',
-            Value: LANGU,
+            Label: 'Outbound Date',
+            Value: DATE_OUT,
         },
         {
             $Type: 'UI.DataField',
-            Label: 'Country Code',
-            Value: BPCOUNTRY_CODE,
+            Label: 'Destination Country Code',
+            Value: COUNTRY_DEST_CODE,
         },
         {
             $Type: 'UI.DataField',
@@ -49,13 +49,13 @@ annotate service.V_Interaction with @(
     ],
 
     UI.PresentationVariant          : {
-        GroupBy       : [PARTNER],
+        GroupBy       : [PARTNER_NUM],
         Total         : [QTY],
         Visualizations: ['@UI.LineItem', ]
     }
 );
 
-annotate service.V_Interaction with @Aggregation.ApplySupported: {
+annotate service.V_delivery_item with @Aggregation.ApplySupported: {
 
     Transformations       : [
         'aggregate',
@@ -70,12 +70,13 @@ annotate service.V_Interaction with @Aggregation.ApplySupported: {
     Rollup                : #None,
     PropertyRestrictions  : true,
     GroupableProperties   : [
-        BPCOUNTRY_CODE,
+        COUNTRY_DEST_CODE,
         ID,
-        PARTNER,
-        LANGU,
-        LOGTEXT,
-        LOG_DATE
+        MATERIAL_ID,
+        PARTNER_NUM,
+        ITEM_DESC,
+        DATE_IN,
+        DATE_OUT
     ],
-    AggregatableProperties: [{Property: ID, }],
+    AggregatableProperties: [{Property: ID}, {Property: PARTNER_NUM}, {Property: QTY}, {Property: MATERIAL_ID}],
 };

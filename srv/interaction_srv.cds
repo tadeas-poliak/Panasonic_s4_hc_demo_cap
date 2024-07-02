@@ -1,13 +1,14 @@
 using app.interactions from '../db/interactions';
-using V_INTERACTION from '../db/interactions';
+using V_DELIVERY_ITEM from '../db/interactions';
 
 service CatalogService {
 
     @requires: 'authenticated-user'
-    entity Interactions_Header as projection on interactions.Interactions_Header {
+    entity Delivery as projection on interactions.Delivery {
         ID,
-        PARTNER,        
-        LOG_DATE,
+        PARTNER_NUM,        
+        DATE_IN,
+        DATE_OUT,
         ITEMS,
         to_Interactions
     };
@@ -18,10 +19,10 @@ service CatalogService {
         where: 'LANGU = ''DE'''
     }]
    @cds.redirection.target: true
-    entity Interactions_Items as projection on interactions.Interactions_Items;
+    entity Item as projection on interactions.Item;
     
-
-    entity V_Interaction as projection on V_INTERACTION;
+    
+entity V_delivery_item as projection on V_DELIVERY_ITEM;
 
 
     function sleep() returns Boolean;

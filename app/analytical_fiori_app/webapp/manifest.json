@@ -1,7 +1,7 @@
 {
   "_version": "1.59.0",
   "sap.app": {
-    "id": "interactionsapp",
+    "id": "analyticalfioriapp",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -11,9 +11,9 @@
     "description": "{{appDescription}}",
     "resources": "resources.json",
     "sourceTemplate": {
-      "id": "@sap/generator-fiori:worklist",
+      "id": "@sap/generator-fiori:alp",
       "version": "1.14.0",
-      "toolsId": "923bdbbd-4f95-4639-9e73-b59ddaf7c64a"
+      "toolsId": "9eb2d78d-96ca-4659-ab0b-e0b6b01a29ec"
     },
     "dataSources": {
       "mainService": {
@@ -61,7 +61,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "interactionsapp.i18n.i18n"
+          "bundleName": "analyticalfioriapp.i18n.i18n"
         }
       },
       "": {
@@ -88,6 +88,11 @@
           "pattern": ":?query:",
           "name": "V_delivery_itemList",
           "target": "V_delivery_itemList"
+        },
+        {
+          "pattern": "V_delivery_item({key}):?query:",
+          "name": "V_delivery_itemObjectPage",
+          "target": "V_delivery_itemObjectPage"
         }
       ],
       "targets": {
@@ -99,23 +104,49 @@
             "settings": {
               "contextPath": "/V_delivery_item",
               "variantManagement": "Page",
-              "hideFilterBar": true,
-              "navigation": {},
+              "navigation": {
+                "V_delivery_item": {
+                  "detail": {
+                    "route": "V_delivery_itemObjectPage"
+                  }
+                }
+              },
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
-                    "type": "AnalyticalTable"
-                  },
-                  "columns": {
-                    "DataField::LOGTEXT": {
-                      "widthIncludingColumnHeader": true
-                    },
-                    "DataField::PARTNER": {
-                      "widthIncludingColumnHeader": true
-                    }
+                    "type": "AnalyticalTable",
+                    "selectionMode": "None"
                   }
                 }
+              },
+              "views": {
+                "paths": [
+                  {
+                    "primary": [
+                      {
+                        "annotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#chartView"
+                      }
+                    ],
+                    "secondary": [
+                      {
+                        "annotationPath": "com.sap.vocabularies.UI.v1.LineItem"
+                      }
+                    ],
+                    "defaultPath": "both"
+                  }
+                ]
               }
+            }
+          }
+        },
+        "V_delivery_itemObjectPage": {
+          "type": "Component",
+          "id": "V_delivery_itemObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/V_delivery_item"
             }
           }
         }
@@ -124,6 +155,6 @@
   },
   "sap.fiori": {
     "registrationIds": [],
-    "archeType": "transactional"
+    "archeType": "analytical"
   }
 }

@@ -9,24 +9,24 @@ context app.interactions {
   type LText       : String(1024);
 
 
-  entity Interactions_Header {
+  entity Delivery {
     key ID              : Integer;
-        ITEMS           : Composition of many Interactions_Items
-                            on ITEMS.INTHeader = $self;
-        PARTNER         : BusinessKey;
-        LOG_DATE        : SDate;
-        BPCOUNTRY       : Country;
-        to_Interactions : Association to many V_INTERACTION
-                            on  to_Interactions.ID      = $self.ID
-                            and to_Interactions.PARTNER = $self.PARTNER;
+        ITEMS           : Composition of many Item
+                            on ITEMS.DELIVERY = $self;
+        PARTNER_NUM         : BusinessKey;
+        DATE_OUT        : SDate;
+        DATE_IN        : SDate;
+        COUNTRY_DEST       : Country;
+        to_Interactions : Association to many V_DELIVERY_ITEM
+                            on  $self.ID = to_Interactions.ID
   };
 
-  entity Interactions_Items {
+  entity Item {
 
-    key INTHeader : Association to Interactions_Header;
-    key TEXT_ID   : BusinessKey;
-        LANGU     : String(2);
-        LOGTEXT   : LText;
+    key MATERIAL_ID   : BusinessKey;
+    key DELIVERY : Association to Delivery;
+        UNIT     : String(3);
+        ITEM_DESC   : LText;
         @DefaultAggregation: #SUM
         QTY       : Decimal;
   };
@@ -36,15 +36,16 @@ context app.interactions {
 
 @cds.persistence.exists
 @cds.persistence.calcview
-entity V_INTERACTION {
+entity V_DELIVERY_ITEM {
 
   key ID             : Integer      @title: 'ID: ID';
-  key PARTNER        : String(10)   @title: 'PARTNER: PARTNER';
-  key TEXT_ID        : String(10)   @title: 'TEXT_ID: TEXT_ID';
-      LOG_DATE       : DateTime       @title: 'LOG_DATE: LOG_DATE';
-      BPCOUNTRY_CODE : String(3)    @title: 'BPCOUNTRY_CODE: BPCOUNTRY_CODE';
-      LANGU          : String(2)    @title: 'LANGU: LANGU';
-      LOGTEXT        : String(1024) @title: 'LOGTEXT: LOGTEXT';
+  key PARTNER_NUM        : String(10)   @title: 'PARTNER_NUM: PARTNER_NUM';
+  key MATERIAL_ID        : String(10)   @title: 'TEXT_ID: TEXT_ID';
+      DATE_OUT       : DateTime       @title: 'DATE_OUT: DATE_OUT';
+      DATE_IN       : DateTime       @title: 'DATE_IN: DATE_IN';
+      COUNTRY_DEST_CODE : String(3)    @title: 'COUNTRY_DEST: COUNTRY_DEST';
+      UNIT          : String(3)    @title: 'UNIT: UNIT';
+      ITEM_DESC        : String(1024) @title: 'LOGTEXT: LOGTEXT';
       QTY            : Decimal      @title: 'QTY: QTY'  @Analytics.Measure: true  @Aggregation.default: #SUM;
       
 }

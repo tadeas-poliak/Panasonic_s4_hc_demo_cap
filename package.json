@@ -30,7 +30,8 @@
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
     "watch-interaction_app": "cds watch --open interaction_app/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-interactions_app": "cds watch --open interactions_app/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-interacations_app": "cds watch --open interacations_app/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-interacations_app": "cds watch --open interacations_app/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-analytical_fiori_app": "cds watch --open analytical_fiori_app/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "requires": {
@@ -38,9 +39,8 @@
       "db": "hana"
     },
     "features": {
-        "odata_new_parser": true
-      }
-    
+      "odata_new_parser": true
+    }
   },
   "sapux": [
     "app/intercation_items",
@@ -56,6 +56,7 @@
     "app/interacations_app",
     "app/interactions_app",
     "app/interactions_app",
-    "app/interactions_app"
+    "app/interactions_app",
+    "app/analytical_fiori_app"
   ]
 }
